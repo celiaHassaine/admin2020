@@ -9,43 +9,16 @@
 
 acl internals {
     51.178.40.210;
+    192.168.0.225;
+    95.182.229.25;
     51.178.40.97;
-    51.178.41.129;
     localhost;
 };
 
 view "internal" {
     match-clients { internals; };
     recursion yes;
-    allow-recursion { internals; };
-
-    zone "." {
-	type hint;
-	file "/usr/share/dns/root.hints";
-    };
-
-    // be authoritative for the localhost forward and reverse zones, and for
-    // broadcast zones as per RFC 1912
-
-    zone "localhost" {
-	type master;
-	file "/etc/bind/db.local";
-    };
-
-    zone "127.in-addr.arpa" {
-	type master;
-	file "/etc/bind/db.127";
-    };
-
-    zone "0.in-addr.arpa" {
-	type master;
-	file "/etc/bind/db.0";
-    };
-
-    zone "255.in-addr.arpa" {
-	type master;
-	file "/etc/bind/db.255";
-    };
+    allow-recursion { any; };
 
     zone "wt7.ephec-ti.be" {
         type master;
@@ -58,34 +31,6 @@ view "internal" {
 view "external" {
     match-clients { any; };
     recursion no;
-
-    zone "." {
-	type hint;
-	file "/usr/share/dns/root.hints";
-    };
-
-    // be authoritative for the localhost forward and reverse zones, and for
-    // broadcast zones as per RFC 1912
-
-    zone "localhost" {
-	type master;
-	file "/etc/bind/db.local";
-    };
-
-    zone "127.in-addr.arpa" {
-	type master;
-	file "/etc/bind/db.127";
-    };
-
-    zone "0.in-addr.arpa" {
-	type master;
-	file "/etc/bind/db.0";
-    };
-
-    zone "255.in-addr.arpa" {
-	type master;
-	file "/etc/bind/db.255";
-    };	
 
     zone "wt7.ephec-ti.be" {
         type master;
