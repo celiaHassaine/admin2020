@@ -6,26 +6,22 @@
 // organization
 //include "/etc/bind/zones.rfc1918";
 
-
 acl internals {
     51.178.40.210;
-    192.168.0.225;
     95.182.229.25;
-    51.178.40.97;
     localhost;
 };
 
 view "internal" {
     match-clients { internals; };
     recursion yes;
-    allow-recursion { any; };
+    allow-recursion { internals; };
 
     zone "wt7.ephec-ti.be" {
         type master;
-        file "/etc/bind/db.internal.wt7.ephec-ti.be";
+        file "/etc/bind/internal/db.internal.wt7.ephec-ti.be";
     };
 };
-
 
 
 view "external" {
@@ -34,6 +30,7 @@ view "external" {
 
     zone "wt7.ephec-ti.be" {
         type master;
-        file "/etc/bind/db.wt7.ephec-ti.be";
+        file "/etc/bind/external/db.wt7.ephec-ti.be";
     };
 };
+
