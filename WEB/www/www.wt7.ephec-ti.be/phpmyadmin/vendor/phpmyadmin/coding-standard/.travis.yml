@@ -1,0 +1,25 @@
+dist: trusty
+
+language: php
+
+php:
+  - 7.1
+  - 7.2
+  - 7.3
+  - nightly
+
+sudo: false
+
+install:
+  - composer install
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+script:
+  - find PMAStandard/ -name '*.php' -print0 | xargs -0 -n1 php -l
+#  - ./vendor/bin/phpunit --configuration phpunit.xml
