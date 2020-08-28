@@ -1,13 +1,7 @@
-//
-// Do any local configuration here
-//
-
-// Consider adding the 1918 zones here, if they are not used in your
-// organization
-//include "/etc/bind/zones.rfc1918";
 
 acl internals {
-    51.178.40.210;
+    51.178.40.97;
+    51.178.41.129;
     95.182.229.25;
     localhost;
 };
@@ -33,4 +27,3 @@ view "external" {
         file "/etc/bind/external/db.wt7.ephec-ti.be";
     };
 };
-
