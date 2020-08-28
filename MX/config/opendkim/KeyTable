@@ -1,0 +1,3 @@
+mail._domainkey.wt7.ephec-ti.be wt7.ephec-ti.be:mail:/etc/opendkim/keys/wt7.ephec-ti.be/mail.private
+mail._domainkey.wt7.ephec-ti.be[Gazelette] wt7.ephec-ti.be[Gazelette]:mail:/etc/opendkim/keys/wt7.ephec-ti.be[Gazelette]/mail.private
+mail._domainkey.wt7.ephec-ti.be[Gazelle-007] wt7.ephec-ti.be[Gazelle-007]:mail:/etc/opendkim/keys/wt7.ephec-ti.be[Gazelle-007]/mail.private
